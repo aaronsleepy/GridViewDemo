@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class GridViewDemoViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()

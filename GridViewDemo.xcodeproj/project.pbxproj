@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		9340ED0A292908DD00D228AE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9340ED09292908DD00D228AE /* AppDelegate.swift */; };
 		9340ED0C292908DD00D228AE /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9340ED0B292908DD00D228AE /* SceneDelegate.swift */; };
-		9340ED0E292908DD00D228AE /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9340ED0D292908DD00D228AE /* ViewController.swift */; };
+		9340ED0E292908DD00D228AE /* GridViewDemoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9340ED0D292908DD00D228AE /* GridViewDemoViewController.swift */; };
 		9340ED11292908DD00D228AE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9340ED0F292908DD00D228AE /* Main.storyboard */; };
 		9340ED13292908DF00D228AE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9340ED12292908DF00D228AE /* Assets.xcassets */; };
 		9340ED16292908DF00D228AE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9340ED14292908DF00D228AE /* LaunchScreen.storyboard */; };
@@ -39,7 +39,7 @@
 		9340ED06292908DD00D228AE /* GridViewDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GridViewDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9340ED09292908DD00D228AE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9340ED0B292908DD00D228AE /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		9340ED0D292908DD00D228AE /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		9340ED0D292908DD00D228AE /* GridViewDemoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GridViewDemoViewController.swift; sourceTree = "<group>"; };
 		9340ED10292908DD00D228AE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		9340ED12292908DF00D228AE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		9340ED15292908DF00D228AE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -101,7 +101,7 @@
 			children = (
 				9340ED09292908DD00D228AE /* AppDelegate.swift */,
 				9340ED0B292908DD00D228AE /* SceneDelegate.swift */,
-				9340ED0D292908DD00D228AE /* ViewController.swift */,
+				9340ED0D292908DD00D228AE /* GridViewDemoViewController.swift */,
 				9340ED0F292908DD00D228AE /* Main.storyboard */,
 				9340ED12292908DF00D228AE /* Assets.xcassets */,
 				9340ED14292908DF00D228AE /* LaunchScreen.storyboard */,
@@ -258,7 +258,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9340ED0E292908DD00D228AE /* ViewController.swift in Sources */,
+				9340ED0E292908DD00D228AE /* GridViewDemoViewController.swift in Sources */,
 				9340ED0A292908DD00D228AE /* AppDelegate.swift in Sources */,
 				9340ED0C292908DD00D228AE /* SceneDelegate.swift in Sources */,
 			);
