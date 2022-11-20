@@ -3,6 +3,15 @@ GridView Demo - UIKit/Storyboard 예제
 
 ![image](https://user-images.githubusercontent.com/89061309/202880021-1925698b-ade8-46b5-b31b-cdc6a3bcd21b.png)
 
+## Branch
+* part3/ch12
+  * 기본 Grid 예제
+    * Datasource: `UICollectionViewDataSource`
+    * Layout: `UICollectionViewFlowLayout`
+* part3/ch6
+  * 고급 Grid 예제
+    * Datasource: `UICollectionViewDiffableDataSource`
+    * Layout: `UICollectionViewCompositionalLayout`
 
 
 ## 학습자료
