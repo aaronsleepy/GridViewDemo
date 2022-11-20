@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct AppleFrameworkModel {
+struct AppleFrameworkModel: Hashable {
     let name: String
     let imageName: String
     let urlString: String
