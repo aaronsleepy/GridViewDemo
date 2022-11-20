@@ -18,7 +18,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="DsX-rP-NVc">
-                                <rect key="frame" x="0.0" y="103" width="393" height="715"/>
+                                <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="s7e-Ex-MdW">
                                     <size key="itemSize" width="131" height="192"/>
@@ -68,10 +68,10 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="DsX-rP-NVc" secondAttribute="bottom" id="3De-j7-umf"/>
+                            <constraint firstAttribute="bottom" secondItem="DsX-rP-NVc" secondAttribute="bottom" id="3De-j7-umf"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="DsX-rP-NVc" secondAttribute="trailing" id="6DY-9D-lyq"/>
                             <constraint firstItem="DsX-rP-NVc" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="mnj-nM-tYj"/>
-                            <constraint firstItem="DsX-rP-NVc" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="yuW-OO-8sQ"/>
+                            <constraint firstItem="DsX-rP-NVc" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="yuW-OO-8sQ"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="🤗 Apple Framework" id="Mxp-Yc-Zlz"/>

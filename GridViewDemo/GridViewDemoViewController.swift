@@ -9,6 +9,7 @@ import UIKit
 
 class GridViewDemoViewController: UIViewController {
     let frameworks: [AppleFrameworkModel] = AppleFrameworkModel.list
+    
 
     @IBOutlet weak var collectionView: UICollectionView!
     override func viewDidLoad() {
@@ -16,6 +17,8 @@ class GridViewDemoViewController: UIViewController {
         
         collectionView.dataSource = self
         collectionView.delegate = self
+        
+        collectionView.contentInset = UIEdgeInsets(top: 20, left: 16, bottom: 0, right: 16)
      }
 }
 
@@ -38,7 +41,8 @@ extension GridViewDemoViewController : UICollectionViewDataSource {
 extension GridViewDemoViewController : UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let interItemSpacing: CGFloat = 10
-        let width = (collectionView.bounds.width  - interItemSpacing * 2) / 3
+        let padding: CGFloat = 16
+        let width = (collectionView.bounds.width  - interItemSpacing * 2 - padding * 2) / 3
         let height = width * 1.5
         
         return CGSize(width: width, height: height)
