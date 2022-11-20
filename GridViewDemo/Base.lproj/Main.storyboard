@@ -27,7 +27,7 @@
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="lPY-yv-6dL">
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="GridViewCollectionViewCell" id="lPY-yv-6dL" customClass="GridViewCollectionViewCell" customModule="GridViewDemo" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="131" height="192"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="p32-uA-jv4">
@@ -56,6 +56,10 @@
                                             </constraints>
                                         </collectionViewCellContentView>
                                         <size key="customSize" width="131" height="192"/>
+                                        <connections>
+                                            <outlet property="nameLabel" destination="oZW-80-FlD" id="kLO-NE-p4X"/>
+                                            <outlet property="thumbnailImageView" destination="ZCa-30-Jtb" id="kwV-CJ-bsw"/>
+                                        </connections>
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>

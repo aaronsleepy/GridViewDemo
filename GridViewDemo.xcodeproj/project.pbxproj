@@ -16,6 +16,7 @@
 		9340ED21292908DF00D228AE /* GridViewDemoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9340ED20292908DF00D228AE /* GridViewDemoTests.swift */; };
 		9340ED2B292908DF00D228AE /* GridViewDemoUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9340ED2A292908DF00D228AE /* GridViewDemoUITests.swift */; };
 		9340ED2D292908DF00D228AE /* GridViewDemoUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9340ED2C292908DF00D228AE /* GridViewDemoUITestsLaunchTests.swift */; };
+		9340ED3A2929BAB500D228AE /* GridViewCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9340ED392929BAB500D228AE /* GridViewCollectionViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +50,7 @@
 		9340ED26292908DF00D228AE /* GridViewDemoUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GridViewDemoUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		9340ED2A292908DF00D228AE /* GridViewDemoUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GridViewDemoUITests.swift; sourceTree = "<group>"; };
 		9340ED2C292908DF00D228AE /* GridViewDemoUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GridViewDemoUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		9340ED392929BAB500D228AE /* GridViewCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GridViewCollectionViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -103,6 +105,7 @@
 				9340ED0B292908DD00D228AE /* SceneDelegate.swift */,
 				9340ED0D292908DD00D228AE /* GridViewDemoViewController.swift */,
 				9340ED0F292908DD00D228AE /* Main.storyboard */,
+				9340ED392929BAB500D228AE /* GridViewCollectionViewCell.swift */,
 				9340ED12292908DF00D228AE /* Assets.xcassets */,
 				9340ED14292908DF00D228AE /* LaunchScreen.storyboard */,
 				9340ED17292908DF00D228AE /* Info.plist */,
@@ -260,6 +263,7 @@
 			files = (
 				9340ED0E292908DD00D228AE /* GridViewDemoViewController.swift in Sources */,
 				9340ED0A292908DD00D228AE /* AppDelegate.swift in Sources */,
+				9340ED3A2929BAB500D228AE /* GridViewCollectionViewCell.swift in Sources */,
 				9340ED0C292908DD00D228AE /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
