@@ -12,5 +12,8 @@ class GridViewCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var thumbnailImageView: UIImageView!
     @IBOutlet weak var nameLabel: UILabel!
     
-    
+    func configigure(_ framework: AppleFrameworkModel) {
+        thumbnailImageView.image = UIImage(named: framework.imageName)
+        nameLabel.text = framework.name
+    }
 }
