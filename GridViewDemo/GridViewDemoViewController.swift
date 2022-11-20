@@ -57,3 +57,9 @@ extension GridViewDemoViewController : UICollectionViewDelegateFlowLayout {
     }
 }
 
+extension GridViewDemoViewController: UICollectionViewDelegate {
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let framework = frameworks[indexPath.item]
+        print(">>> Selected: \(framework.name)")
+    }
+}
