@@ -18,7 +18,7 @@ TBD
     * Datasource: `UICollectionViewDiffableDataSource`
     * Layout: `UICollectionViewCompositionalLayout`
 
-* part3/ch7
+* part3/modality
   * 모달 예제
 
 
