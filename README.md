@@ -12,12 +12,14 @@ TBD
   * 기본 Grid 예제
     * Datasource: `UICollectionViewDataSource`
     * Layout: `UICollectionViewFlowLayout`
+
 * part3/ch6
   * 고급 Grid 예제
     * Datasource: `UICollectionViewDiffableDataSource`
     * Layout: `UICollectionViewCompositionalLayout`
+
 * part3/ch7
- * 모달 예제
+  * 모달 예제
 
 
 ## 학습자료
