@@ -40,6 +40,8 @@ class GridViewDemoViewController: UIViewController {
         dataSource.apply(snapshot)
         
         collectionView.collectionViewLayout = layout()
+        
+        collectionView.delegate = self
      }
     
     private func layout() -> UICollectionViewCompositionalLayout {
@@ -65,5 +67,12 @@ extension GridViewDemoViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let framework = frameworks[indexPath.item]
         print(">>> Selected: \(framework.name)")
+        
+        let storyboard = UIStoryboard(name: "Detail", bundle: nil)
+        let viewController = storyboard.instantiateViewController(withIdentifier: "FrameworkDetailViewController") as! FrameworkDetailViewController
+     
+        viewController.framework = framework
+//        viewController.modalPresentationStyle = .fullScreen
+        present(viewController, animated: true)
     }
 }
