@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SafariServices
 
 class FrameworkDetailViewController: UIViewController {
     
@@ -27,4 +28,16 @@ class FrameworkDetailViewController: UIViewController {
         titleLabel.text = framework.name
         descriptionLabel.text = framework.description
     }
+    
+    
+    @IBAction func learnMoreTapped(_ sender: Any) {
+        guard let url = URL(string: framework.urlString) else {
+            return
+        }
+        
+        let safari = SFSafariViewController(url: url)
+        present(safari, animated: true)
+    }
+    
+    
 }
