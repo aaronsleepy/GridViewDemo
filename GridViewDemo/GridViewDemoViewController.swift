@@ -6,9 +6,11 @@
 //
 
 import UIKit
+import Combine
 
 class GridViewDemoViewController: UIViewController {
-    let frameworks: [AppleFrameworkModel] = AppleFrameworkModel.list
+//    @Published var frameworks: [AppleFrameworkModel] = AppleFrameworkModel.list
+    let frameworks = CurrentValueSubject<[Item], Never>(AppleFrameworkModel.list)
     
     // Datasource
     var dataSource: UICollectionViewDiffableDataSource<Section, Item>!
@@ -17,14 +19,56 @@ class GridViewDemoViewController: UIViewController {
         case main
     }
     
-    
+    // Combine
+    var subscriptions = Set<AnyCancellable>()
+    let didSelect = PassthroughSubject<Item, Never>()
 
     @IBOutlet weak var collectionView: UICollectionView!
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        collectionView.delegate = self
+        // CollectionView Presentaation, Layout 설정
+        configureCollectionView()
         
+        // CollectionView 그리는데 필요한 Data 설정
+//        applySectionItems(frameworks, to: .main)
+        
+        bind()
+     }
+    
+    private func bind() {
+        // input: 사용자 입력을 받아서 처리해야할 것
+        // - item 선택 되었을 때 처리
+        didSelect
+            .receive(on: RunLoop.main)
+            .sink { item in
+            let storyboard = UIStoryboard(name: "Detail", bundle: nil)
+            let viewController = storyboard.instantiateViewController(withIdentifier: "FrameworkDetailViewController") as! FrameworkDetailViewController
+         
+                viewController.framework.send(item)
+    
+            self.present(viewController, animated: true)
+        }.store(in: &subscriptions)
+        
+        // output: data, state 변경에 따라서 UI 업데이트할 것
+        // - items(frameworks)가 설정되었을 때 view를 업데이트
+        frameworks
+            .receive(on: RunLoop.main)
+            .sink { list in
+            self.applySectionItems(list)
+        }.store(in: &subscriptions)
+    }
+    
+    private func applySectionItems(_ items: [Item], to section: Section = .main) {
+        // data
+        var snapshot = NSDiffableDataSourceSnapshot<Section, Item>()
+        snapshot.appendSections([section])
+        snapshot.appendItems(items, toSection: section)
+        dataSource.apply(snapshot)
+    }
+    
+    private func configureCollectionView() {
+        // presentation
         dataSource = UICollectionViewDiffableDataSource<Section, Item>(collectionView: collectionView, cellProvider: { collectionView, indexPath, item in
             guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "GridViewCollectionViewCell", for: indexPath) as? GridViewCollectionViewCell else {
                 return nil
@@ -33,16 +77,11 @@ class GridViewDemoViewController: UIViewController {
             return cell
         })
         
-        var snapshot = NSDiffableDataSourceSnapshot<Section, Item>()
-        snapshot.appendSections([.main])
-        snapshot.appendItems(frameworks, toSection: .main)
-        
-        dataSource.apply(snapshot)
-        
+        // layer
         collectionView.collectionViewLayout = layout()
         
         collectionView.delegate = self
-     }
+    }
     
     private func layout() -> UICollectionViewCompositionalLayout {
         // item
@@ -65,14 +104,9 @@ class GridViewDemoViewController: UIViewController {
 
 extension GridViewDemoViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let framework = frameworks[indexPath.item]
+//        let framework = frameworks[indexPath.item]
+        let framework = frameworks.value[indexPath.item]
         print(">>> Selected: \(framework.name)")
-        
-        let storyboard = UIStoryboard(name: "Detail", bundle: nil)
-        let viewController = storyboard.instantiateViewController(withIdentifier: "FrameworkDetailViewController") as! FrameworkDetailViewController
-     
-        viewController.framework = framework
-//        viewController.modalPresentationStyle = .fullScreen
-        present(viewController, animated: true)
+        didSelect.send(framework)
     }
 }

@@ -7,11 +7,16 @@
 
 import UIKit
 import SafariServices
+import Combine
 
 class FrameworkDetailViewController: UIViewController {
     
-    var framework: AppleFrameworkModel = AppleFrameworkModel(name: "Unknown", imageName: "", urlString: "", description: "")
+//    @Published var framework: AppleFrameworkModel = AppleFrameworkModel(name: "Unknown", imageName: "", urlString: "", description: "")
     
+    // Combine
+    var subscriptions = Set<AnyCancellable>()
+    let buttonTapped = PassthroughSubject<AppleFrameworkModel, Never>()
+    var framework = CurrentValueSubject<AppleFrameworkModel, Never>(AppleFrameworkModel(name: "Unknown", imageName: "", urlString: "", description: ""))
     
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var titleLabel: UILabel!
@@ -19,11 +24,33 @@ class FrameworkDetailViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        updateUI()
+        
+        bind()
     }
     
-    func updateUI() {
+    private func bind() {
+        // input: Button tapped
+        // framework -> url -> safari -> present
+        buttonTapped
+            .receive(on: RunLoop.main)
+            .compactMap { framework in
+            URL(string: framework.urlString)
+        }
+            .sink { url in
+            let safari = SFSafariViewController(url: url)
+            self.present(safari, animated: true)
+                
+            }.store(in: &subscriptions)
+        
+        // output: Data 설정될 때 UI 업데이트
+        framework
+            .receive(on: RunLoop.main)
+            .sink { item in
+                self.updateUI(item: item)
+            }.store(in: &subscriptions)
+    }
+    
+    func updateUI(item framework: AppleFrameworkModel) {
         imageView.image = UIImage(named: framework.imageName)
         titleLabel.text = framework.name
         descriptionLabel.text = framework.description
@@ -31,12 +58,7 @@ class FrameworkDetailViewController: UIViewController {
     
     
     @IBAction func learnMoreTapped(_ sender: Any) {
-        guard let url = URL(string: framework.urlString) else {
-            return
-        }
-        
-        let safari = SFSafariViewController(url: url)
-        present(safari, animated: true)
+        buttonTapped.send(framework.value)
     }
     
     
