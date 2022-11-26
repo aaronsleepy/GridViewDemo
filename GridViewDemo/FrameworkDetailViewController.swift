@@ -7,11 +7,15 @@
 
 import UIKit
 import SafariServices
+import Combine
 
 class FrameworkDetailViewController: UIViewController {
     
     var framework: AppleFrameworkModel = AppleFrameworkModel(name: "Unknown", imageName: "", urlString: "", description: "")
     
+    // Combine
+    var subscriptions = Set<AnyCancellable>()
+    let buttonTapped = PassthroughSubject<AppleFrameworkModel, Never>()
     
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var titleLabel: UILabel!
@@ -21,6 +25,24 @@ class FrameworkDetailViewController: UIViewController {
         super.viewDidLoad()
 
         updateUI()
+        
+        bind()
+    }
+    
+    private func bind() {
+        // input: Button tapped
+        // framework -> url -> safari -> present
+        buttonTapped
+            .receive(on: RunLoop.main)
+            .compactMap { framework in
+            URL(string: framework.urlString)
+        }
+        .sink { url in
+            let safari = SFSafariViewController(url: url)
+            self.present(safari, animated: true)
+        }.store(in: &subscriptions)
+        
+        // output: Data 설정될 때 UI 업데이트
     }
     
     func updateUI() {
@@ -31,12 +53,7 @@ class FrameworkDetailViewController: UIViewController {
     
     
     @IBAction func learnMoreTapped(_ sender: Any) {
-        guard let url = URL(string: framework.urlString) else {
-            return
-        }
-        
-        let safari = SFSafariViewController(url: url)
-        present(safari, animated: true)
+        buttonTapped.send(framework)
     }
     
     
