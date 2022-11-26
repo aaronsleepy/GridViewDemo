@@ -11,7 +11,7 @@ import Combine
 
 class FrameworkDetailViewController: UIViewController {
     
-    var framework: AppleFrameworkModel = AppleFrameworkModel(name: "Unknown", imageName: "", urlString: "", description: "")
+    @Published var framework: AppleFrameworkModel = AppleFrameworkModel(name: "Unknown", imageName: "", urlString: "", description: "")
     
     // Combine
     var subscriptions = Set<AnyCancellable>()
@@ -23,8 +23,6 @@ class FrameworkDetailViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        updateUI()
         
         bind()
     }
@@ -37,15 +35,21 @@ class FrameworkDetailViewController: UIViewController {
             .compactMap { framework in
             URL(string: framework.urlString)
         }
-        .sink { url in
+            .sink { url in
             let safari = SFSafariViewController(url: url)
             self.present(safari, animated: true)
-        }.store(in: &subscriptions)
+                
+            }.store(in: &subscriptions)
         
         // output: Data 설정될 때 UI 업데이트
+        $framework
+            .receive(on: RunLoop.main)
+            .sink { item in
+                self.updateUI(item: item)
+            }.store(in: &subscriptions)
     }
     
-    func updateUI() {
+    func updateUI(item framework: AppleFrameworkModel) {
         imageView.image = UIImage(named: framework.imageName)
         titleLabel.text = framework.name
         descriptionLabel.text = framework.description
