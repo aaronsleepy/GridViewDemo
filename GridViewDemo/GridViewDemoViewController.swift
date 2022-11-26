@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Combine
 
 class GridViewDemoViewController: UIViewController {
     let frameworks: [AppleFrameworkModel] = AppleFrameworkModel.list
@@ -23,8 +24,23 @@ class GridViewDemoViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        collectionView.delegate = self
+        // CollectionView Presentaation, Layout 설정
+        configureCollectionView()
         
+        // CollectionView 그리는데 필요한 Data 설정
+        applySectionItems(frameworks, to: .main)
+     }
+    
+    private func applySectionItems(_ items: [Item], to section: Section = .main) {
+        // data
+        var snapshot = NSDiffableDataSourceSnapshot<Section, Item>()
+        snapshot.appendSections([section])
+        snapshot.appendItems(items, toSection: section)
+        dataSource.apply(snapshot)
+    }
+    
+    private func configureCollectionView() {
+        // presentation
         dataSource = UICollectionViewDiffableDataSource<Section, Item>(collectionView: collectionView, cellProvider: { collectionView, indexPath, item in
             guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "GridViewCollectionViewCell", for: indexPath) as? GridViewCollectionViewCell else {
                 return nil
@@ -33,16 +49,11 @@ class GridViewDemoViewController: UIViewController {
             return cell
         })
         
-        var snapshot = NSDiffableDataSourceSnapshot<Section, Item>()
-        snapshot.appendSections([.main])
-        snapshot.appendItems(frameworks, toSection: .main)
-        
-        dataSource.apply(snapshot)
-        
+        // layer
         collectionView.collectionViewLayout = layout()
         
         collectionView.delegate = self
-     }
+    }
     
     private func layout() -> UICollectionViewCompositionalLayout {
         // item
