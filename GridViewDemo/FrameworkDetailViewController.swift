@@ -11,11 +11,12 @@ import Combine
 
 class FrameworkDetailViewController: UIViewController {
     
-    @Published var framework: AppleFrameworkModel = AppleFrameworkModel(name: "Unknown", imageName: "", urlString: "", description: "")
+//    @Published var framework: AppleFrameworkModel = AppleFrameworkModel(name: "Unknown", imageName: "", urlString: "", description: "")
     
     // Combine
     var subscriptions = Set<AnyCancellable>()
     let buttonTapped = PassthroughSubject<AppleFrameworkModel, Never>()
+    var framework = CurrentValueSubject<AppleFrameworkModel, Never>(AppleFrameworkModel(name: "Unknown", imageName: "", urlString: "", description: ""))
     
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var titleLabel: UILabel!
@@ -42,7 +43,7 @@ class FrameworkDetailViewController: UIViewController {
             }.store(in: &subscriptions)
         
         // output: Data 설정될 때 UI 업데이트
-        $framework
+        framework
             .receive(on: RunLoop.main)
             .sink { item in
                 self.updateUI(item: item)
@@ -57,7 +58,7 @@ class FrameworkDetailViewController: UIViewController {
     
     
     @IBAction func learnMoreTapped(_ sender: Any) {
-        buttonTapped.send(framework)
+        buttonTapped.send(framework.value)
     }
     
     
