@@ -9,7 +9,8 @@ import UIKit
 import Combine
 
 class GridViewDemoViewController: UIViewController {
-    @Published var frameworks: [AppleFrameworkModel] = AppleFrameworkModel.list
+//    @Published var frameworks: [AppleFrameworkModel] = AppleFrameworkModel.list
+    let frameworks = CurrentValueSubject<[Item], Never>(AppleFrameworkModel.list)
     
     // Datasource
     var dataSource: UICollectionViewDiffableDataSource<Section, Item>!
@@ -51,7 +52,7 @@ class GridViewDemoViewController: UIViewController {
         
         // output: data, state 변경에 따라서 UI 업데이트할 것
         // - items(frameworks)가 설정되었을 때 view를 업데이트
-        $frameworks
+        frameworks
             .receive(on: RunLoop.main)
             .sink { list in
             self.applySectionItems(list)
@@ -103,7 +104,8 @@ class GridViewDemoViewController: UIViewController {
 
 extension GridViewDemoViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let framework = frameworks[indexPath.item]
+//        let framework = frameworks[indexPath.item]
+        let framework = frameworks.value[indexPath.item]
         print(">>> Selected: \(framework.name)")
         didSelect.send(framework)
     }
