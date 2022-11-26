@@ -9,7 +9,7 @@ import UIKit
 import Combine
 
 class GridViewDemoViewController: UIViewController {
-    let frameworks: [AppleFrameworkModel] = AppleFrameworkModel.list
+    @Published var frameworks: [AppleFrameworkModel] = AppleFrameworkModel.list
     
     // Datasource
     var dataSource: UICollectionViewDiffableDataSource<Section, Item>!
@@ -30,7 +30,7 @@ class GridViewDemoViewController: UIViewController {
         configureCollectionView()
         
         // CollectionView 그리는데 필요한 Data 설정
-        applySectionItems(frameworks, to: .main)
+//        applySectionItems(frameworks, to: .main)
         
         bind()
      }
@@ -51,6 +51,11 @@ class GridViewDemoViewController: UIViewController {
         
         // output: data, state 변경에 따라서 UI 업데이트할 것
         // - items(frameworks)가 설정되었을 때 view를 업데이트
+        $frameworks
+            .receive(on: RunLoop.main)
+            .sink { list in
+            self.applySectionItems(list)
+        }.store(in: &subscriptions)
     }
     
     private func applySectionItems(_ items: [Item], to section: Section = .main) {
