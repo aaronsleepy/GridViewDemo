@@ -8,7 +8,7 @@
 import UIKit
 import Combine
 
-class GridViewDemoViewController: UIViewController {
+class FrameworkListViewController: UIViewController {
 //    @Published var frameworks: [AppleFrameworkModel] = AppleFrameworkModel.list
     let frameworks = CurrentValueSubject<[Item], Never>(AppleFrameworkModel.list)
     
@@ -70,7 +70,7 @@ class GridViewDemoViewController: UIViewController {
     private func configureCollectionView() {
         // presentation
         dataSource = UICollectionViewDiffableDataSource<Section, Item>(collectionView: collectionView, cellProvider: { collectionView, indexPath, item in
-            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "GridViewCollectionViewCell", for: indexPath) as? GridViewCollectionViewCell else {
+            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "GridViewCollectionViewCell", for: indexPath) as? FrameworkCell else {
                 return nil
             }
             cell.configigure(item)
@@ -102,7 +102,7 @@ class GridViewDemoViewController: UIViewController {
     }
 }
 
-extension GridViewDemoViewController: UICollectionViewDelegate {
+extension FrameworkListViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
 //        let framework = frameworks[indexPath.item]
         let framework = frameworks.value[indexPath.item]
