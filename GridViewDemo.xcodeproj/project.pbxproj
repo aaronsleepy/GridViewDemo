@@ -18,6 +18,8 @@
 		9340ED2D292908DF00D228AE /* GridViewDemoUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9340ED2C292908DF00D228AE /* GridViewDemoUITestsLaunchTests.swift */; };
 		9340ED3A2929BAB500D228AE /* FrameworkCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9340ED392929BAB500D228AE /* FrameworkCell.swift */; };
 		9340ED3C2929BB9F00D228AE /* AppleFrameworkModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9340ED3B2929BB9F00D228AE /* AppleFrameworkModel.swift */; };
+		936805C4293CDB6E006AD6D3 /* FrameworkListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 936805C3293CDB6E006AD6D3 /* FrameworkListViewModel.swift */; };
+		936805C6293CDB78006AD6D3 /* FrameworkDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 936805C5293CDB78006AD6D3 /* FrameworkDetailViewModel.swift */; };
 		93E0DAD8292F743C0008E246 /* Detail.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 93E0DAD7292F743C0008E246 /* Detail.storyboard */; };
 		93E0DADA292F74C40008E246 /* FrameworkDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93E0DAD9292F74C40008E246 /* FrameworkDetailViewController.swift */; };
 /* End PBXBuildFile section */
@@ -55,6 +57,8 @@
 		9340ED2C292908DF00D228AE /* GridViewDemoUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GridViewDemoUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		9340ED392929BAB500D228AE /* FrameworkCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FrameworkCell.swift; sourceTree = "<group>"; };
 		9340ED3B2929BB9F00D228AE /* AppleFrameworkModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppleFrameworkModel.swift; sourceTree = "<group>"; };
+		936805C3293CDB6E006AD6D3 /* FrameworkListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FrameworkListViewModel.swift; sourceTree = "<group>"; };
+		936805C5293CDB78006AD6D3 /* FrameworkDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FrameworkDetailViewModel.swift; sourceTree = "<group>"; };
 		93E0DAD7292F743C0008E246 /* Detail.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Detail.storyboard; sourceTree = "<group>"; };
 		93E0DAD9292F74C40008E246 /* FrameworkDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FrameworkDetailViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -109,6 +113,8 @@
 			children = (
 				9340ED09292908DD00D228AE /* AppDelegate.swift */,
 				9340ED0B292908DD00D228AE /* SceneDelegate.swift */,
+				936805C3293CDB6E006AD6D3 /* FrameworkListViewModel.swift */,
+				936805C5293CDB78006AD6D3 /* FrameworkDetailViewModel.swift */,
 				936805C0293CDAE8006AD6D3 /* Model */,
 				936805C2293CDB2A006AD6D3 /* View */,
 				9340ED12292908DF00D228AE /* Assets.xcassets */,
@@ -289,9 +295,11 @@
 			files = (
 				9340ED0E292908DD00D228AE /* FrameworkListViewController.swift in Sources */,
 				9340ED3C2929BB9F00D228AE /* AppleFrameworkModel.swift in Sources */,
+				936805C4293CDB6E006AD6D3 /* FrameworkListViewModel.swift in Sources */,
 				9340ED0A292908DD00D228AE /* AppDelegate.swift in Sources */,
 				9340ED3A2929BAB500D228AE /* FrameworkCell.swift in Sources */,
 				93E0DADA292F74C40008E246 /* FrameworkDetailViewController.swift in Sources */,
+				936805C6293CDB78006AD6D3 /* FrameworkDetailViewModel.swift in Sources */,
 				9340ED0C292908DD00D228AE /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

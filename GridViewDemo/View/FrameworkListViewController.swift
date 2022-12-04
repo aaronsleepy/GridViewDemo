@@ -8,10 +8,7 @@
 import UIKit
 import Combine
 
-class FrameworkListViewController: UIViewController {
-//    @Published var frameworks: [AppleFrameworkModel] = AppleFrameworkModel.list
-    let frameworks = CurrentValueSubject<[Item], Never>(AppleFrameworkModel.list)
-    
+class FrameworkListViewController: UIViewController {    
     // Datasource
     var dataSource: UICollectionViewDiffableDataSource<Section, Item>!
     typealias Item = AppleFrameworkModel
@@ -21,17 +18,21 @@ class FrameworkListViewController: UIViewController {
     
     // Combine
     var subscriptions = Set<AnyCancellable>()
-    let didSelect = PassthroughSubject<Item, Never>()
+    
+    // ViewModel
+    var viewModel: FrameworkListViewModel!
+    
 
     @IBOutlet weak var collectionView: UICollectionView!
     override func viewDidLoad() {
         super.viewDidLoad()
+        viewModel = FrameworkListViewModel(items: AppleFrameworkModel.list)
         
         // CollectionView Presentaation, Layout 설정
         configureCollectionView()
         
         // CollectionView 그리는데 필요한 Data 설정
-//        applySectionItems(frameworks, to: .main)
+        // applySectionItems(frameworks, to: .main)
         
         bind()
      }
@@ -39,20 +40,21 @@ class FrameworkListViewController: UIViewController {
     private func bind() {
         // input: 사용자 입력을 받아서 처리해야할 것
         // - item 선택 되었을 때 처리
-        didSelect
+        viewModel.selectedItem
+            .compactMap { $0 }
             .receive(on: RunLoop.main)
             .sink { item in
-            let storyboard = UIStoryboard(name: "Detail", bundle: nil)
-            let viewController = storyboard.instantiateViewController(withIdentifier: "FrameworkDetailViewController") as! FrameworkDetailViewController
+                let storyboard = UIStoryboard(name: "Detail", bundle: nil)
+                let viewController = storyboard.instantiateViewController(withIdentifier: "FrameworkDetailViewController") as! FrameworkDetailViewController
          
                 viewController.framework.send(item)
     
-            self.present(viewController, animated: true)
-        }.store(in: &subscriptions)
+                self.present(viewController, animated: true)
+            }.store(in: &subscriptions)
         
         // output: data, state 변경에 따라서 UI 업데이트할 것
         // - items(frameworks)가 설정되었을 때 view를 업데이트
-        frameworks
+        viewModel.frameworks
             .receive(on: RunLoop.main)
             .sink { list in
             self.applySectionItems(list)
@@ -104,9 +106,6 @@ class FrameworkListViewController: UIViewController {
 
 extension FrameworkListViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-//        let framework = frameworks[indexPath.item]
-        let framework = frameworks.value[indexPath.item]
-        print(">>> Selected: \(framework.name)")
-        didSelect.send(framework)
+        viewModel.didSelect(at: indexPath)
     }
 }
