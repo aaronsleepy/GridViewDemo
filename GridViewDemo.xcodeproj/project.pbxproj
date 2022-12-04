@@ -109,12 +109,8 @@
 			children = (
 				9340ED09292908DD00D228AE /* AppDelegate.swift */,
 				9340ED0B292908DD00D228AE /* SceneDelegate.swift */,
-				9340ED0D292908DD00D228AE /* FrameworkListViewController.swift */,
-				9340ED0F292908DD00D228AE /* Main.storyboard */,
-				93E0DAD7292F743C0008E246 /* Detail.storyboard */,
-				93E0DAD9292F74C40008E246 /* FrameworkDetailViewController.swift */,
-				9340ED392929BAB500D228AE /* FrameworkCell.swift */,
-				9340ED3B2929BB9F00D228AE /* AppleFrameworkModel.swift */,
+				936805C0293CDAE8006AD6D3 /* Model */,
+				936805C2293CDB2A006AD6D3 /* View */,
 				9340ED12292908DF00D228AE /* Assets.xcassets */,
 				9340ED14292908DF00D228AE /* LaunchScreen.storyboard */,
 				9340ED17292908DF00D228AE /* Info.plist */,
@@ -137,6 +133,26 @@
 				9340ED2C292908DF00D228AE /* GridViewDemoUITestsLaunchTests.swift */,
 			);
 			path = GridViewDemoUITests;
+			sourceTree = "<group>";
+		};
+		936805C0293CDAE8006AD6D3 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				9340ED3B2929BB9F00D228AE /* AppleFrameworkModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		936805C2293CDB2A006AD6D3 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				9340ED0D292908DD00D228AE /* FrameworkListViewController.swift */,
+				9340ED392929BAB500D228AE /* FrameworkCell.swift */,
+				93E0DAD9292F74C40008E246 /* FrameworkDetailViewController.swift */,
+				9340ED0F292908DD00D228AE /* Main.storyboard */,
+				93E0DAD7292F743C0008E246 /* Detail.storyboard */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
