@@ -7,7 +7,7 @@
 
 import UIKit
 
-class GridViewCollectionViewCell: UICollectionViewCell {
+class FrameworkCell: UICollectionViewCell {
     
     @IBOutlet weak var thumbnailImageView: UIImageView!
     @IBOutlet weak var nameLabel: UILabel!
