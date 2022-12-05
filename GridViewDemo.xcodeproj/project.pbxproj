@@ -88,6 +88,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		932A629E293DF577003427D3 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				936805C3293CDB6E006AD6D3 /* FrameworkListViewModel.swift */,
+				936805C5293CDB78006AD6D3 /* FrameworkDetailViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
 		9340ECFD292908DD00D228AE = {
 			isa = PBXGroup;
 			children = (
@@ -113,10 +122,9 @@
 			children = (
 				9340ED09292908DD00D228AE /* AppDelegate.swift */,
 				9340ED0B292908DD00D228AE /* SceneDelegate.swift */,
-				936805C3293CDB6E006AD6D3 /* FrameworkListViewModel.swift */,
-				936805C5293CDB78006AD6D3 /* FrameworkDetailViewModel.swift */,
 				936805C0293CDAE8006AD6D3 /* Model */,
 				936805C2293CDB2A006AD6D3 /* View */,
+				932A629E293DF577003427D3 /* ViewModel */,
 				9340ED12292908DF00D228AE /* Assets.xcassets */,
 				9340ED14292908DF00D228AE /* LaunchScreen.storyboard */,
 				9340ED17292908DF00D228AE /* Info.plist */,
