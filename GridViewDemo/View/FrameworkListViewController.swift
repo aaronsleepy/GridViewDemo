@@ -47,7 +47,7 @@ class FrameworkListViewController: UIViewController {
                 let storyboard = UIStoryboard(name: "Detail", bundle: nil)
                 let viewController = storyboard.instantiateViewController(withIdentifier: "FrameworkDetailViewController") as! FrameworkDetailViewController
          
-                viewController.framework.send(item)
+                viewController.viewModel = FrameworkDetailViewModel(framework: item)
     
                 self.present(viewController, animated: true)
             }.store(in: &subscriptions)
