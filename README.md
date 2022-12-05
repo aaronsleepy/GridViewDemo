@@ -22,8 +22,9 @@ GridView Demo - UIKit/Storyboard 예제
   * 모달 예제
 * part4/combine
   * Combine 활용
-  
 * part7/mvvm
+  * MVVM 아키텍처로 리팩터링
+* part7/mvvm-detail
   * MVVM 아키텍처로 리팩터링
 
 
